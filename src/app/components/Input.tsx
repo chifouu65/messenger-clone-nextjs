@@ -1,6 +1,6 @@
 import React from 'react'
 import clsx from 'clsx'
-import { 
+import {
     FieldValues,
     FieldError,
     UseFormRegister,
@@ -17,18 +17,19 @@ interface InputProps {
 }
 
 export default function Input({
-    label,
-    id,
-    type,
-    required,
-    register,
-    errors,
-    disabled
-}: InputProps) {
-    
+                                  label,
+                                  id,
+                                  type,
+                                  required,
+                                  register,
+                                  errors,
+                                  disabled
+                              }: InputProps) {
     return (
         <div>
-            <label htmlFor={id}>
+            <label
+                className={'block text-sm font-medium text-gray-700'}
+                htmlFor={id}>
                 {label}
             </label>
             <div>
@@ -37,7 +38,7 @@ export default function Input({
                     type={type}
                     autoComplete={id}
                     disabled={disabled}
-                    {...register(id, { required })}
+                    {...register(id, {required})}
                     className={clsx(`
                         form-input
                         block
@@ -52,13 +53,13 @@ export default function Input({
                         ring-gray-200
                         placeholder:text-gray-400
                         focus:ring-2
-                        focus:ring-insset
+                        focus:ring-inset
                         focus:ring-indigo-500
                         sm:text-sm
                         sm:leading-5
                     `,
-                    errors?[id] && "focus:ring-red-500": "focus:ring-indigo-500",
-                    disabled && "opacity-50 cursor-not-allowed"
+                        errors?[id] && "focus:ring-blue-500" : "focus:ring-indigo-500",
+                        disabled && "opacity-50 cursor-not-allowed"
                     )}
                 />
             </div>

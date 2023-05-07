@@ -38,14 +38,16 @@ export default function Button({
           focus-visible:outline-2
           focus-visible:outline-offset-2
           `,
-          disabled && 'opacity-50 cursor-default',
+          disabled && 'opacity-50 cursor-not-allowed',
           fullWidth && 'w-full',
           secondary ? 'text-gray-900' : 'text-white',
           danger&& 'bg-red-500 hover:bg-red-600 focus-visible:ring-red-500',
           !secondary && !danger && 'bg-blue-500 hover:bg-blue-600 focus-visible:ring-blue-500'
         )}
       >
-        {children}
+        {
+            disabled ? 'Loading...' : children
+        }
       </button>
     )
 }
