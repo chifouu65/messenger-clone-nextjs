@@ -28,7 +28,11 @@ const useRoutes = () => {
         {
             label: 'logout',
             href: '/',
-            onClick: () => signOut(),
+            onClick: () => {
+                signOut().then(() => {
+                    window.location.href = '/';
+                });
+            },
             icon: HiArrowLeftOnRectangle,
         }
     ], [pathname, conversationId]);
