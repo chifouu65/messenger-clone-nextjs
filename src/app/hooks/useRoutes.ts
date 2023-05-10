@@ -1,3 +1,4 @@
+'use client'
 import { useMemo } from "react";
 import { usePathname } from "next/navigation";
 import {
@@ -27,11 +28,15 @@ const useRoutes = () => {
         },
         {
             label: 'logout',
-            href: '/',
+            href: '#',
             onClick: () => {
                 signOut().then(() => {
-                    window.location.href = '/';
-                });
+                    window.location.href = '/'
+                }).catch(() => {
+                    //
+                    console.log('error to logout')
+                    signOut()
+                })
             },
             icon: HiArrowLeftOnRectangle,
         }
