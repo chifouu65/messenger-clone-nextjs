@@ -12,7 +12,6 @@ interface DesktopSideBarProps {
 
 const DesktopSideBar : React.FC<DesktopSideBarProps> = ({ currentUser }) => {
   const routes = useRoutes()
-
   const [ isOpen, setIsOpen ] = React.useState(false)
   
   return (
@@ -74,7 +73,7 @@ const DesktopSideBar : React.FC<DesktopSideBarProps> = ({ currentUser }) => {
           "
         >
           <Avatar
-            currentUser={currentUser}
+           currentUser={currentUser}
           />
         </div>
       </nav>
