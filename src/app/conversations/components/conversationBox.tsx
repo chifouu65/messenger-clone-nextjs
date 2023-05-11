@@ -63,8 +63,6 @@ export default function ConversationBox({data, selected}: Props) {
     return 'Started a conversation';
   }, [lastMessage]);
 
-  console.log('otherUser', otherUser)
-  console.log('data', data.users)
   return (
     <div
       onClick={handleClick}

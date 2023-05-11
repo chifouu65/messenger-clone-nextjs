@@ -37,7 +37,6 @@ export default function ConversationList({users, initialItems, title}: Props) {
         border-r
         border-gray-200
       `,
-        // @ts-ignore
         isOpen ? 'hidden' : 'block w-full left-0'
       )}
     >
