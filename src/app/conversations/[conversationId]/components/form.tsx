@@ -7,8 +7,10 @@ import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { HiPaperAirplane, HiPhoto } from 'react-icons/hi2';
 import MessageInput from './messageInput';
 import { CldUploadButton } from 'next-cloudinary';
+import { useRouter } from 'next/navigation';
 
 export default function Form() {
+  const router = useRouter()
   const { conversationId} = useConversation()
   const { register, handleSubmit, setValue, formState: { errors }}
   = useForm<FieldValues>({
@@ -23,8 +25,6 @@ export default function Form() {
       ...data,
       conversationId
     })
-    .then(() => {})
-    .catch(() => {})
   }
 
   const handleUpload = (result: any) => {

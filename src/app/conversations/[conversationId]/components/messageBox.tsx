@@ -55,6 +55,7 @@ export default function MessageBox({isLast, data} : Props) {
             target='_blank'
             href={data?.image}
             rel="noopener noreferrer"
+            aria-label="message image"
             >
               <Image
                 src={data?.image}
@@ -72,13 +73,16 @@ export default function MessageBox({isLast, data} : Props) {
             </Link>
           )
           :
-          (
-            <div>
-              {data?.body}
-            </div>
-          )
+          (<div>{data?.body}</div>)
         }
         </div>
+      {
+        isLast && isOwn && seenList.length > 0 && (
+          <div className='text-xs font-light text-gray-500'>
+            {`Seen by ${seenList}`}
+          </div>
+        ) 
+      }
       </div>
     </div>
   )
