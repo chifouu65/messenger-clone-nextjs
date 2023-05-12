@@ -17,15 +17,15 @@ interface ConfirmModalProps {
 
 const ConfirmModal: React.FC<ConfirmModalProps> = ({ 
   isOpen, 
-  onClose 
+  onClose,
 }) => {
   const router = useRouter();
   const { conversationId } = useConversation();
   const [isLoading, setIsLoading] = useState(false);
   
   const onDelete = useCallback(() => {
+   
     setIsLoading(true);
-
     axios.delete(`/api/conversations/${conversationId}`)
     .then(() => {
       onClose();

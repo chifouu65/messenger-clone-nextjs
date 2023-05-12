@@ -13,7 +13,7 @@ export async function DELETE(
   try {
     const { conversationId } = params;
     const currentUser = await getCurrentUser();
-
+    console.log('currentUser', currentUser);
     if (!currentUser?.id) {
       return NextResponse.json(null);
     }
@@ -29,6 +29,14 @@ export async function DELETE(
 
     if (!existingConversation) {
       return new NextResponse('Invalid ID', { status: 400 });
+    } else if (!existingConversation.users.find(user => user.id === currentUser.id)) {
+      return new NextResponse('Unauthorized', { status: 401 });
+    } else if (existingConversation.users.length > 2) {
+      return new NextResponse('Cannot delete group conversations', { status: 400 });
+    } else if (existingConversation.users.length === 1) {
+      return new NextResponse('Cannot delete conversations with only one user', { status: 400 });
+    } else {
+      console.log('existingConversation', existingConversation);
     }
 
     const deletedConversation = await prisma.conversation.deleteMany({

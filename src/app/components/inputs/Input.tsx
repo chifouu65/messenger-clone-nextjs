@@ -28,7 +28,7 @@ export default function Input({
     return (
         <div>
             <label
-                className={'block text-sm font-medium text-gray-700'}
+                className={'block text-sm font-medium text-gray-700 mb-2'}
                 htmlFor={id}>
                 {label}
             </label>
