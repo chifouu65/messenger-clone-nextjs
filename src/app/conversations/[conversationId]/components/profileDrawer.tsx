@@ -7,6 +7,7 @@ import { Dialog, Transition } from '@headlessui/react';
 import { IoClose, IoTrash } from 'react-icons/io5';
 import Avatar from '@/app/components/avatar';
 import ConfirmModal from '../components/confirmModal';
+import AvatarGroup from '@/app/components/avatarGroup';
 
 interface Props {
     onClose: () => void;
@@ -89,7 +90,13 @@ export default function ProfileDrawer({ onClose, isOpen, data }: Props) {
                       <div className="relative mt-6 flex-1 px-4 sm:px-6">
                         <div className="flex flex-col items-center">
                           <div className="mb-2">
-                            <Avatar currentUser={otherUser} />
+                          {
+                            data.isGroup ? (
+                              <AvatarGroup users={data.users}/>
+                            ) : (
+                              <Avatar currentUser={otherUser} />
+                            )
+                          }
                           </div>
                           <div className='font-semibold'>
                             {title}
@@ -115,6 +122,16 @@ export default function ProfileDrawer({ onClose, isOpen, data }: Props) {
                           </div>
                           <div className="w-full pb-5 pt-5 sm:p-0">
                             <dl className="space-y-6 px-4 sm:space-y-4 sm:px-6">
+                              {data.isGroup && (
+                                <div>
+                                  <dt className="text-sm font-medium text-gray-500 sm:w-40 sm flex-shrink-0">
+                                    Emails
+                                  </dt>
+                                  <dd className="mt-1 font-semibold text-sm text-gray-900 sm:col-span-2">
+                                    {data.users.map((user) => user.email).join(', ')}
+                                  </dd>
+                                </div>
+                              )}
                               {!data.isGroup && (
                                 <div>
                                   <dt className="text-sm font-medium text-gray-500 sm:w-40 sm:flex-shrink-0">

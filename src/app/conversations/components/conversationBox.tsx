@@ -10,6 +10,7 @@ import clsx from 'clsx';
 import { FullConversationType } from '@/app/types';
 import useOtherUser from '@/app/hooks/useOtherUser';
 import Avatar from '@/app/components/avatar';
+import AvatarGroup from '@/app/components/avatarGroup';
 
 interface Props {
   data: FullConversationType
@@ -80,13 +81,18 @@ export default function ConversationBox({data, selected}: Props) {
         selected ? 'bg-neutral-100' : 'bg-white'
       )}
     >
-      <Avatar currentUser={otherUser} />
+      {data.isGroup ? (
+          <AvatarGroup users={data.users}/>
+        ) : (
+          <Avatar currentUser={otherUser} />
+        )
+      }
       <div className="min-w-0 flex-1">
         <div className="focus:outline-none">
           <span className="absolute inset-0" aria-hidden="true" />
           <div className="flex justify-between items-center mb-1">
             <p className="text-md font-medium text-gray-900">
-              {otherUser?.name || 'Unknown'}
+              {data.isGroup ? data.name : otherUser?.name}
             </p>
             {lastMessage?.createdAt && (
               <p 
