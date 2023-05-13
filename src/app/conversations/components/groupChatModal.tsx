@@ -73,7 +73,6 @@ export default function GroupChatModal({isOpen, onClose, users}: Props) {
                   label="Group name"
                   id="name"
                   disabled={isLoaded}
-                  errors={errors}
                   required
                 />
                 <Select

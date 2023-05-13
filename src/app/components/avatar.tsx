@@ -2,11 +2,10 @@
 
 import { User } from "@prisma/client";
 import Image from "next/image";
-import { Tooltip } from '@chakra-ui/react'
 import useActiveList from "../hooks/useActiveList";
 
 interface AvatarProps {
-   currentUser?: User
+   currentUser?: User | null;
 };
 
 const Avatar: React.FC<AvatarProps> = ({ currentUser }) => {

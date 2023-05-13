@@ -12,7 +12,6 @@ interface InputProps {
     type?: string;
     required?: boolean;
     register: UseFormRegister<FieldValues>;
-    errors: FieldError | any
     disabled?: boolean;
 }
 
@@ -22,7 +21,6 @@ export default function Input({
                                   type,
                                   required,
                                   register,
-                                  errors,
                                   disabled
                               }: InputProps) {
     return (
@@ -58,7 +56,6 @@ export default function Input({
                         sm:text-sm
                         sm:leading-5
                     `,
-                        errors?[id] && "focus:ring-blue-500" : "focus:ring-indigo-500",
                         disabled && "opacity-50 cursor-not-allowed"
                     )}
                 />
