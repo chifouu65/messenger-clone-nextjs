@@ -30,23 +30,25 @@ const Avatar: React.FC<AvatarProps> = ({ currentUser }) => {
           alt="Avatar"
         />
       </div>
-      <span 
-          className={`
-            absolute 
-            block 
-            rounded-full 
-            ring-2 
-            ring-white 
-            top-0 
-            right-0
-            h-2 
-            w-2 
-            md:h-3 
-            md:w-3
-            ${isActive ? 'bg-green-500' : 'bg-gray-500'}
-          `
-          }
-      />
+      {isActive && (
+        <span 
+            className={`
+              absolute 
+              block 
+              rounded-full 
+              ring-2 
+              ring-white 
+              top-0 
+              right-0
+              h-2 
+              w-2 
+              md:h-3 
+              md:w-3
+              bg-green-500
+            `
+            }
+        />
+      )}
     </div>
   );
 }

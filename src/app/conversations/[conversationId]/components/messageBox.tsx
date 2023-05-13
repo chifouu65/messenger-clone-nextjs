@@ -10,7 +10,6 @@ import { FullMessageType } from "@/app/types";
 import Avatar from "@/app/components/avatar";
 import ImageModal from "./imageModal";
 import { FaEyeSlash, FaEye } from 'react-icons/fa'
-import {GiSixEyes} from 'react-icons/gi'
 interface MessageBoxProps {
   data: FullMessageType;
   isLast?: boolean;
@@ -72,39 +71,18 @@ const MessageBox: React.FC<MessageBoxProps> = ({
           <div className="text-xs text-gray-400">
               {format(new Date(data.createdAt), 'p')}
           </div>
-          {isLast && isOwn && (
-            seenList.length > 0 ? 
-            data.seen?.length === 2 ? (
-              <div 
-              className="
-              text-blue-500
-              flex items-center gap-1
-              "
-            >
-              <FaEye className="font-2xl"/>  {seenList}
-            </div>  
-            ) : (
-            <div 
-              className="
-              text-blue-500
-              flex items-center gap-1
-              "
-            >
-              <GiSixEyes className="font-2xl"/> {seenList}
-            </div>  
-            )
-            
-            : (
-            <div
-              className="
-              text-gray-500
-              "
-            >
-              <FaEyeSlash className="font-2xl"/>
-            </div>
-            
-            )
-          )}
+          {isLast && isOwn && seenList.length > 0 && (
+          <div 
+            className="
+            text-xs 
+            font-light 
+            text-gray-500
+            "
+          >
+            {seenList}
+            <FaEye size={22} className="inline-block ml-1" />
+          </div>
+        )}
       </div>
     </div>
    );
